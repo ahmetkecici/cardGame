@@ -1,0 +1,205 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    height: 100vh;
+    display: flex;
+
+  }
+ .header .time{
+ 
+  
+	padding: 16px 32px;
+  color: white;
+  position: absolute;
+text-align: center;
+
+  bottom: 20px;
+  font-size: 20px
+ }
+ .header .theme{
+	position: absolute;
+	padding: 16px 32px;
+	color: white;
+	position: absolute;
+  text-align: center;
+	right: 35%;
+	bottom: 20px;
+	font-size: 22px
+ }
+ .score{
+
+	padding: 16px 32px;
+  color: white;
+  position: absolute;
+text-align: center;
+  right: 0;
+  bottom: 20px;
+  font-size: 22px
+ }
+  .header{
+	background-color: darkred;
+	
+	width: 800px;
+	position: relative;
+	height: 100px;
+	border-radius: 50px;
+	margin: 0 auto 20px auto;
+  }
+  .rules-btn{
+	  position: absolute;
+	  top: 0;
+	  right: 0;
+	  background-color: #222f3e;
+	  color: white;
+	  padding: 16px 16px;
+  }
+  .rules-btn:hover{
+	  color: white;
+  }
+  .nameArea{
+	  width: 250px;
+	  margin: auto;
+  }
+  .nameArea input{
+	  margin: 5px 0;
+	  width: 100%;
+	  outline: none;
+	  padding: 8px 4px;
+	  border: none;
+	  border-bottom: 1px solid black;
+  }
+  .game {
+    width: 800px;
+    height: 700px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px;
+    background-color: #c0392b;
+    border-radius: 25px;
+    padding: 40px;
+  }
+  
+
+  .memory-card {
+    width: calc(19% - 10px);
+    height: calc(25% - 10px);
+    margin: 0.2rem 0.4rem;
+	background: #e74c3c;
+	font-size: 0;
+	color: #ffffff;
+	border-radius: 15px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+	transition: all .5 ease;
+}
+.memory-card.open {
+	transform: rotateY(0);
+	background: #02b3e4;
+	cursor: default;
+	animation-name: flipInY;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .75s;
+  font-size: 120px;
+}
+.memory-card.match {
+	cursor: default;
+	background: yellow;
+
+	animation-name: rubberBand;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .75s;
+}
+
+.memory-card.unmatched {
+	animation-name: pulse;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .75s;
+	background: #e2043b;
+}
+.wrong{
+	border: 1px solid red;
+}
+.game-result{
+	margin: auto;
+	width: 500px;
+	height: 150px;
+  padding: 20px;
+}
+@keyframes flipInY {
+	from {
+		transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+		animation-timing-function: ease-in;
+		opacity: 0;
+	}
+
+	40% {
+		transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+		animation-timing-function: ease-in;
+	}
+
+	60% {
+		transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+		opacity: 1;
+	}
+
+	80% {
+		transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+	}
+
+	to {
+		transform: perspective(400px);
+	}
+}
+@keyframes pulse {
+	from {
+		transform: scale3d(1, 1, 1);
+	}
+
+	50% {
+		transform: scale3d(1.2, 1.2, 1.2);
+	}
+
+	to {
+		transform: scale3d(1, 1, 1);
+	}
+}
+@keyframes rubberBand {
+	from {
+		transform: scale3d(1, 1, 1);
+	}
+
+	30% {
+		transform: scale3d(1.25, 0.75, 1);
+	}
+
+	40% {
+		transform: scale3d(0.75, 1.25, 1);
+	}
+
+	50% {
+		transform: scale3d(1.15, 0.85, 1);
+	}
+
+	65% {
+		transform: scale3d(.95, 1.05, 1);
+	}
+
+	75% {
+		transform: scale3d(1.05, .95, 1);
+	}
+
+	to {
+		transform: scale3d(1, 1, 1);
+	}
+}
